@@ -1,0 +1,32 @@
+name: Python CI  # اسم العمل (workflow)
+
+on:
+  push:
+    branches:
+      - master  # تشغيل الـ CI/CD عند دفع تغييرات إلى الفرع الرئيسي
+      - add-ci-cd  # أو أي فرع آخر ترغب في مراقبته
+  pull_request:
+    branches:
+      - master  # تشغيل CI/CD عند تقديم طلب سحب إلى الفرع الرئيسي
+      - add-ci-cd
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # استخدام أحدث إصدار من نظام Ubuntu
+
+    steps:
+    - name: Checkout code  # تحميل الكود من المستودع
+      uses: actions/checkout@v2
+
+    - name: Set up Python  # إعداد بايثون
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # استخدام أحدث إصدار من بايثون 3.x
+
+    - name: Install dependencies  # تثبيت المتطلبات
+      run: |
+        pip install -r requirements.txt  # تثبيت الحزم المطلوبة
+
+    - name: Run tests  # تشغيل اختبارات الوحدات (إذا كنت قد أضفت اختبارات)
+      run: |
+        python -m unittest discover  # أو أي أمر آخر لتشغيل الاختبارات
