@@ -15,4 +15,4 @@ This repository contains Python scripts for penetration testing. It includes a p
 ## Setup:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/penetration-testing-python.git
+   git clone https://github.com/ahmed4toson/penetration-testing-python.git
